@@ -1,26 +1,16 @@
-# Sahana Sundar Site — migration starter
+# Sahana Sundar Site
 
-This is a **partial independent reconstruction** of the published Google Site at https://sites.google.com/view/sahanasundar/home.
+Standalone static website based on the published homepage at https://sites.google.com/view/sahanasundar/home .
 
-## What is included
-- Standalone HTML/CSS/JavaScript landing page built from visible public home-page content
-- 15 original navigation destinations as outbound links
-- Responsive layout, basic semantic markup, contact link
+## Available now
+- 15 working local page routes
+- Responsive navigation
+- Information from the original homepage organized into relevant pages
+- Original page links for cross-checking
+- No dependencies; run with `python -m http.server 8000`.
 
-## Not included yet
-- The original Google Sites theme, complete styling, images, embedded Google Drive files, and content for the 14 other pages
-- A complete offline copy of the original website
+## Migration limits
+Google Drive confirms source file `18CoBMC2epVIaul5LCLXXUxD2gLuoc04o` is a Google Site, but its native contents are not downloadable through the available API. The uploaded Takeout archive contained 13 PDFs from a personal folder, **not website source code or images**. Original images, media and PDFs have not been uploaded to GitHub to avoid publishing unintended personal files. Content for Internships and Work Experience is marked unrecovered rather than invented. This is not an exact visual copy of Google Sites.
 
-Google Takeout ZIP `takeout-20261115T040505Z-1-001.zip` contained **only 13 PDF documents** from `Takeout/Drive/Sahana_s Stuff/`, no Google Sites pages. These private documents are intentionally *not* included in this source repository or published website.
-
-## Run locally
-Open `index.html` in a browser, or run `python -m http.server 8000` in this directory and browse to http://localhost:8000.
-
-## Deploy
-This static website can be hosted on GitHub Pages, Vercel, Netlify, or another static host once you finish the content migration.
-
-## Source and migration notes
-Source: https://sites.google.com/view/sahanasundar/home
-Original editor: https://sites.google.com/d/18CoBMC2epVIaul5LCLXXUxD2gLuoc04o/p/1K1CSYkoKwmY10s79AZz9ZV-KLdZ8enBb/edit
-
-Do not mistake the extracted PDFs for exported Google Sites source code.
+## Deployment
+Deploy this folder to GitHub Pages or another static hosting provider. Each route uses `<slug>/index.html`, and shared CSS and JavaScript are at the root.

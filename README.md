@@ -1,16 +1,27 @@
 # Sahana Sundar Site
 
-Standalone static website based on the published homepage at https://sites.google.com/view/sahanasundar/home .
+A self-hostable static capture of the 15-page Google Sites portfolio at https://sites.google.com/view/sahanasundar/home .
 
-## Available now
-- 15 working local page routes
-- Responsive navigation
-- Information from the original homepage organized into relevant pages
-- Original page links for cross-checking
-- No dependencies; run with `python -m http.server 8000`.
+## Full capture and rebuild
 
-## Migration limits
-Google Drive confirms source file `18CoBMC2epVIaul5LCLXXUxD2gLuoc04o` is a Google Site, but its native contents are not downloadable through the available API. The uploaded Takeout archive contained 13 PDFs from a personal folder, **not website source code or images**. Original images, media and PDFs have not been uploaded to GitHub to avoid publishing unintended personal files. Content for Internships and Work Experience is marked unrecovered rather than invented. This is not an exact visual copy of Google Sites.
+This repository contains a reproducible migration pipeline:
 
-## Deployment
-Deploy this folder to GitHub Pages or another static hosting provider. Each route uses `<slug>/index.html`, and shared CSS and JavaScript are at the root.
+- `scripts/mirror_google_site.py` visits all 15 published pages, scrolls to load media, preserves the rendered Google Sites markup, downloads images, and rewrites internal links to local routes.
+- `.github/workflows/mirror-google-site.yml` runs the capture in GitHub Actions, verifies page content and image availability, then commits the pages and local images to this repository.
+- Each generated page is at `<slug>/index.html`; the homepage is `index.html`. Images are stored in `assets/`.
+
+To run locally after the capture succeeds:
+
+```sh
+python -m http.server 8000
+```
+
+Navigate to http://localhost:8000/ and use the menu to move between real local pages.
+
+## Limitations
+
+This is a **static reconstruction of the published Google Site**, not an export of Google's private editor implementation. It faithfully preserves the scraped public page content, sections and media. Some embedded Google Drive document viewers, site search, carousels or JavaScript-driven components may need manual reimplementation; Google-hosted CSS and fonts may require internet access.
+
+The site is distinct from `sujaysun101/Sahana-Sundar-Website`, which is not changed.
+
+The destination GitHub repo is currently public, so review any documents, images and personal details before public deployment.
